@@ -10,7 +10,7 @@ static const int user_bh            = 2;        /* 2 is the default spacing arou
 static const int usealtbar          = 1;        /* 1 means use non-dwm status bar */
 static const char *altbarclass      = "Polybar"; /* Alternate bar class name */
 static const char *alttrayname      = "tray";    /* Polybar tray instance name */
-static const char *altbarcmd        = "$HOME/bar.sh"; /* Alternate bar launch command */
+static const char *altbarcmd        = "$HOME/.config/polybar/launch.sh"; /* Alternate bar launch command */
 static const char *fonts[]          = { "FiraCode Nerd Font:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
