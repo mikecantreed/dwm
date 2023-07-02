@@ -2330,6 +2330,17 @@ view(const Arg *arg)
 
 	if ((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
 		return;
+	
+/* Emit an XEvent to notify the active tag change */
+XEvent xev;
+xev.type = ClientMessage;
+xev.xclient.window = root;
+xev.xclient.message_type = XInternAtom(dpy, "_NET_CURRENT_DESKTOP", False);
+xev.xclient.format = 32;
+xev.xclient.data.l[0] = selmon->tagset[selmon->seltags];
+xev.xclient.data.l[1] = CurrentTime;
+XSendEvent(dpy, root, False, SubstructureNotifyMask, &xev);
+
 	selmon->seltags ^= 1; /* toggle sel tagset */
 	if (arg->ui & TAGMASK) {
 		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
